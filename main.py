@@ -10,7 +10,7 @@ def downloadSM(link):
         print(yt.title)
         ys = yt.streams.get_audio_only()
         ys.download(mp3=True)
-        print('Download Successful\n')
+        print('\nDownload Successful')
     except:
         print('connection failed')
 
@@ -25,7 +25,20 @@ def downloadMP(link):
     except:
         print('connection failed\n') 
 
-op = str(input("""What do you want to download: 
+
+banner = """
+        
+                __       
+   __  ____  __/ /_____ _
+  / / / / / / / __/ __ `/
+ / /_/ / /_/ / /_/ /_/ / 
+ \__, /\__,_/\__/\__,_/  
+/____/                   
+
+                           
+"""
+print(banner)
+op = str(input("""What do you want to do: 
 Single Music [1] Playlist [2]  Exit[3]
 """))
 if op == '1':
@@ -34,8 +47,3 @@ if op == '1':
 if op == '2':
     url = str(input('Enter the playlist URL: '))
     downloadMP(url)
-else:
-    print('Bye') 
-
-
-

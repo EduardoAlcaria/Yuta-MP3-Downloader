@@ -26,7 +26,7 @@ def downloadMP(link):
         print('connection failed\n') 
 
 
-banner = """
+banner = r"""
         
                 __       
    __  ____  __/ /_____ _
@@ -34,8 +34,8 @@ banner = """
  / /_/ / /_/ / /_/ /_/ / 
  \__, /\__,_/\__/\__,_/  
 /____/                   
-
-                           
+    
+by Eduardo Alcaria                       
 """
 print(banner)
 op = str(input("""What do you want to do: 

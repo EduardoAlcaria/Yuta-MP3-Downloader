@@ -1,7 +1,7 @@
 from pytubefix import Playlist, YouTube
 from pytubefix.cli import on_progress
 from time import sleep
-import os, sys
+import os, sys, re
 # Colors for the terminal, ANSI code pattern
 cyan = "\033[1;36m"
 yellow = "\033[1;33m"
@@ -9,13 +9,24 @@ pink = "\033[1;95m"
 green = "\033[1;32m"
 red = "\033[1;31m"
 color_reset = "\033[m"
+
 def print_success(massage):
     print(f"{green}{massage}{color_reset}")
 def print_error(massage):
     print(f"{red}{massage}{color_reset}")
 def print_warning(massage):
     print(f"{yellow}{massage}{color_reset}")
+def link_auth(link):
+    youTube_valid = re.compile(r"(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+"
+    )
 
+    if not youTube_valid.match(link):
+        return "invalid link"
+    if "list=" in link:
+        return "playlist"
+    if "v=" in link or "youtu.be/" in link: 
+        return "video"
+    return "unknown"
 #function to ask the user if he wants to download another music
 def download_again():
     again = str(input(f"{yellow}Would you like to download another one? [y/n]: {color_reset}")).lower().strip()
@@ -44,6 +55,7 @@ def download_music_playlist(link): # function to dowload a playlist from youtube
     try:
         pl = Playlist(link)
         for video in pl.videos:
+            print_success(f"Dowloading: {video.title}")
             yp = video.streams.get_audio_only()
             yp.download(filename=f"{video.title}.mp3")
         print_success("Downloads has been successful")
@@ -67,17 +79,21 @@ def terminal_interface(): # function to start the termianl inteface
     {red}FOR EDUCATIONAL PURPOSES ONLY. NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
         """
     print(banner)
-    choice = str(input(f"What do you want to do:\n{cyan}[1] Single Music{color_reset}\n{yellow}[2] Playlist{color_reset}\n{red}[3] Exit{color_reset}\n> ")).lower().strip()
-    if choice == "1": # single music download
-        url = str(input(f"{yellow}Type an URL: {color_reset}")).strip()
+    url = str(input(f"{cyan}enter a YOUTUBE link>{color_reset} ")).strip()
+    val = link_auth(url)
+    if val == "video": # single music download
+        print_success("Starting Download...")
         download_single_music(url)
-    elif choice == "2":# download a playslit
-        url = str(input(f"{yellow}Enter the playlist URL: {color_reset}")).strip()
+    elif val == "playlist":# download a playslit
+        print_success("Starting Download...")
         download_music_playlist(url)
-    elif choice == "3": # exit the problem
-        sys.exit(f"{yellow}Exiting Program{color_reset}")
+    elif val == "invalid": # exit the problem
+        clean_terminal()
+        print_error("invalid link, pleace enter the url again")
     else: # invalid command handle
-        print(f"{red} invalid choice, Pleace try again{color_reset}")
+        clean_terminal()
+        print_error("{unknown link, Pleace try again{color_reset")
     terminal_interface()
 
 terminal_interface() # start the program
+clean_terminal()

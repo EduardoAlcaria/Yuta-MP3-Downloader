@@ -83,10 +83,10 @@ def terminal_interface(): # function to start the termianl inteface
     url = str(input(f"{cyan}Enter a YOUTUBE link>{color_reset} ")).strip()
     val = link_auth(url)
     if val == "video": # single music download
-        print_success("Starting Download...")
+        print_success("Starting Download....")
         download_single_music(url)
     elif val == "playlist":# download a playslit
-        print_success("Starting Download...")
+        print_success("Starting Download....")
         download_music_playlist(url)
     elif val == "invalid": # exit the problem
         clean_terminal()

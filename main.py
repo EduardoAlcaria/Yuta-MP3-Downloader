@@ -1,7 +1,8 @@
 from pytubefix import Playlist, YouTube
 from pytubefix.cli import on_progress
-from time import sleep
-import os, sys, re
+from os import name, system
+from sys import exit
+from re import compile
 # Colors for the terminal, ANSI code pattern
 cyan = "\033[1;36m"
 yellow = "\033[1;33m"
@@ -17,7 +18,7 @@ def print_error(massage):
 def print_warning(massage):
     print(f"{yellow}{massage}{color_reset}")
 def link_auth(link):
-    youTube_valid = re.compile(r"(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+"
+    youTube_valid = compile(r"(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+"
     )
 
     if not youTube_valid.match(link):
@@ -33,13 +34,13 @@ def download_again():
     if again == "y":
         terminal_interface()
     else:
-        sys.exit()
+        exit()
 #function to clean the terminal
 def clean_terminal():
-    if os.name == 'nt': # check if the user uses windowns
-        os.system('cls')
+    if name == 'nt': # check if the user uses windowns
+        system('cls')
     else:
-        os.system('clear') # check if the user uses linux or macOS
+        system('clear') # check if the user uses linux or macOS
 def download_single_music(link): #function to download a single music from youtube
     try:
         yt = YouTube(link, on_progress_callback = on_progress)

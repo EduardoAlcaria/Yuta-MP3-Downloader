@@ -80,7 +80,7 @@ def terminal_interface(): # function to start the termianl inteface
     {red}FOR EDUCATIONAL PURPOSES ONLY. NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
         """
     print(banner)
-    url = str(input(f"{cyan}enter a YOUTUBE link>{color_reset} ")).strip()
+    url = str(input(f"{cyan}Enter a YOUTUBE link>{color_reset} ")).strip()
     val = link_auth(url)
     if val == "video": # single music download
         print_success("Starting Download...")

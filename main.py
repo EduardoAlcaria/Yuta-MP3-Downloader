@@ -65,36 +65,39 @@ def download_music_playlist(link): # function to dowload a playlist from youtube
         print_error(f"connection failed: {e}") 
         terminal_interface()     
 def terminal_interface(): # function to start the termianl inteface
-    clean_terminal()
-    banner = f"""
-    {pink}         
-                    __       
-        __  ____  __/ /_____ _
-        / / / / / / / __/ __ `/
-        / /_/ / /_/ / /_/ /_/ / 
-        \__, /\__,_/\__/\__,_/  
-        /____/                   
-    {color_reset}
-    {pink}An MP3 Downloader by Eduardo Alcaria{color_reset}    
-
-    {red}FOR EDUCATIONAL PURPOSES ONLY. NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
-        """
-    print(banner)
-    url = str(input(f"{cyan}Enter a YOUTUBE link>{color_reset} ")).strip()
-    val = link_auth(url)
-    if val == "video": # single music download
-        print_success("Starting Download....")
-        download_single_music(url)
-    elif val == "playlist":# download a playslit
-        print_success("Starting Download....")
-        download_music_playlist(url)
-    elif val == "invalid": # exit the problem
+    try:
         clean_terminal()
-        print_error("invalid link, pleace enter the url again")
-    else: # invalid command handle
-        clean_terminal()
-        print_error("{unknown link, Pleace try again{color_reset")
-    terminal_interface()
+        banner = f"""
+        {pink}         
+                        __       
+            __  ____  __/ /_____ _
+            / / / / / / / __/ __ `/
+            / /_/ / /_/ / /_/ /_/ / 
+            \__, /\__,_/\__/\__,_/  
+            /____/                   
+        {color_reset}
+        {pink}An MP3 Downloader by Eduardo Alcaria{color_reset}    
 
-terminal_interface() # start the program
+        {red}FOR EDUCATIONAL PURPOSES ONLY. NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
+            """
+        print(banner)
+        url = str(input(f"{cyan}Enter a YOUTUBE link>{color_reset} ")).strip()
+        val = link_auth(url)
+        if val == "video": # single music download
+            print_success("Starting Download....")
+            download_single_music(url)
+        elif val == "playlist":# download a playslit
+            print_success("Starting Download....")
+            download_music_playlist(url)
+        elif val == "invalid": # exit the problem
+            clean_terminal()
+            print_error("invalid link, pleace enter the url again")
+        else: # invalid command handle
+            clean_terminal()
+            print_error("{unknown link, Pleace try again{color_reset")
+        terminal_interface()
+    except:
+        print_error("Unexpected input, pleace try again")
+
 clean_terminal()
+terminal_interface() # start the program

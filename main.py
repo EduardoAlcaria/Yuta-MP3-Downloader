@@ -69,16 +69,18 @@ def terminal_interface(): # function to start the termianl inteface
         clean_terminal()
         banner = f"""
         {pink}         
-                        __       
+                         __       
             __  ____  __/ /_____ _
             / / / / / / / __/ __ `/
             / /_/ / /_/ / /_/ /_/ / 
             \__, /\__,_/\__/\__,_/  
             /____/                   
         {color_reset}
-        {pink}An MP3 Downloader by Eduardo Alcaria{color_reset}    
+                {pink}An MP3 Downloader
+                by Eduardo Alcaria{color_reset}    
 
-        {red}FOR EDUCATIONAL PURPOSES ONLY. NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
+        {red}FOR EDUCATIONAL PURPOSES ONLY.
+    NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}                   
             """
         print(banner)
         url = str(input(f"{cyan}Enter a YOUTUBE link>{color_reset} ")).strip()

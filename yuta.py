@@ -84,7 +84,10 @@ def terminal_interface(): # function to start the termianl inteface
                     /____/                   
                 {color_reset}
                         {pink}An MP3 Downloader
-                        by Eduardo Alcaria{color_reset}           
+                        by Eduardo Alcaria
+
+                    {red}FOR EDUCATIONAL PURPOSES ONLY.
+                NOT RESPONSIBLE FOR COPYRIGHT INFRINGEMENT{color_reset}               
                     """
                 print(banner)
                 url = str(input(f"{cyan}Enter a YOUTUBE Playlist/Video link>{color_reset} ")).strip()

@@ -3,6 +3,8 @@ from pytubefix.cli import on_progress
 from os import name, system
 from sys import exit
 from re import compile
+from rich.progress import track
+from time import sleep
 # Colors for the terminal, ANSI code pattern
 cyan = "\033[1;36m"
 pink = "\033[1;95m"
@@ -11,7 +13,7 @@ red = "\033[1;31m"
 color_reset = "\033[m"
 
 def print_success(message):
-    print(f"{green}{message}{color_reset}")
+    print(f"{pink}{message}{color_reset}")
 def print_error(message):
     print(f"{red}{message}{color_reset}")
 def print_warning(message):
@@ -55,9 +57,10 @@ def download_single_music(link): #function to download a single music from youtu
     download_again()
 def download_music_playlist(link): # function to dowload a playlist from youtube
     try:
-        downloads = 0
         pl = Playlist(link)
-        for video in pl.videos:
+        total_videos = len(pl.videos)
+        downloads = 0
+        for video in track(pl.videos, description="[bright_magenta]Downloading videos...", total=total_videos):
             try:
                 print(f"{pink}Dowloading: {video.title}{color_reset}")
                 yp = video.streams.get_audio_only()
@@ -65,8 +68,7 @@ def download_music_playlist(link): # function to dowload a playlist from youtube
                 downloads += 1
             except Exception as e:
                 print_warning(f"Skipped {video.title}: {e}")
-                downloads -=1
-        print_success(f"{downloads} Downloads successfuls")      
+        print_success("All downloads successfuls")      
     except Exception as e:
         print_error(f"connection failed: {e}")   
     download_again()
@@ -81,7 +83,8 @@ def terminal_interface(): # function to start the termianl inteface
                     / / / / / / / __/ __ `/
                     / /_/ / /_/ / /_/ /_/ / 
                     \__, /\__,_/\__/\__,_/  
-                    /____/                   
+                    /____/   
+                        Version: 0.8                
                 {color_reset}
                         {pink}An MP3 Downloader
                         by Eduardo Alcaria

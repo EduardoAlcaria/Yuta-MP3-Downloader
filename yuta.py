@@ -47,11 +47,12 @@ def clean_terminal():
         system('clear') # check if the user uses linux or macOS
 def download_single_music(link): #function to download a single music from youtube
     try:
-        yt = YouTube(link, on_progress_callback = on_progress)
-        ys = yt.streams.get_audio_only()
-        ys.download(mp3=True)
-        print(f"{pink}{yt.title}: {color_reset}",end="")
-        print_success("\nDownload Successful")
+        for i in track(range(1), description="[green]Downloading..."):
+            yt = YouTube(link)
+            ys = yt.streams.get_audio_only()
+            ys.download(mp3=True)
+            print_success(f"{yt.title}: ")
+        print_success("Download Successful")
     except Exception as e:
         print_error(f"connection failed {e}")
     download_again()

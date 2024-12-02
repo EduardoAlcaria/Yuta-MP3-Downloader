@@ -18,7 +18,7 @@ def terminal_interface(): # function to start the termianl inteface
                     / /_/ / /_/ / /_/ /_/ / 
                     \__, /\__,_/\__/\__,_/  
                     /____/   
-                        Version: 0.9                
+                        Version: 0.9.1                
                 {color_reset}
                         {pink}An MP3 Downloader
                         by Eduardo Alcaria

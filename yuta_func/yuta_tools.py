@@ -14,15 +14,15 @@ def clean_terminal():
     else:
         system('clear') # check if the user uses linux or macOS
 
-def download_again():
-    again = str(input(f"{"\033[1;36m"}Would you like to download again? [y/n]: {"\033[m"}")).lower().strip()
+def download_again(msg):
+    again = str(input(f"{"\033[1;36m"}{msg}{"\033[m"}")).lower().strip()
     if again == "n":
         exit("Good Bye")
     elif again == "y":
         return
     else:
-        print_error("Invalid input, Pleace type 'y' or 'n'.")
-        download_again()
+        print_error("Invalid input, Pleace type 'y' or 'n'.", end="")
+        download_again(">")
 
 def link_auth(link):
     youTube_valid = compile(r"(https?://)?(www\.)?(youtube\.com|youtu\.?be)/.+")

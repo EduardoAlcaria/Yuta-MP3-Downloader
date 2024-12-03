@@ -13,7 +13,7 @@ def download_single_music(link): #function to download a single music from youtu
         print_success("Download Successful")
     except Exception as e:
         print_error(f"connection failed {e}")
-    download_again()
+    download_again("Would you like to download another one [y/n]: ")
 
 def download_music_playlist(link): # function to dowload a playlist from youtube
     try:
@@ -34,4 +34,4 @@ def download_music_playlist(link): # function to dowload a playlist from youtube
         print_success("All downloads successfuls")      
     except Exception as e:
         print_error(f"connection failed: {e}")   
-    download_again()
+    download_again("Would you like to download another one [y/n]: ")

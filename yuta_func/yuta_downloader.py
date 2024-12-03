@@ -9,7 +9,7 @@ def download_single_music(link): #function to download a single music from youtu
         download_path = str(input(f"{"\033[1;36m"}Where would like to keep? [PATH]: {"\033[m"}"))
         for i in track(range(1), description="[bright_magenta]Downloading..."):
             ys = yt.streams.get_audio_only()
-            ys.download(mp3=True, output_path=download_path)
+            ys.download(filename=f"{yt.title}.mp3", output_path=download_path)
         print_success("Download Successful")
     except Exception as e:
         print_error(f"connection failed {e}")

@@ -1,4 +1,4 @@
-# Yuta, a MP3 Downloader
+# Yuta, an MP3 Downloader
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/Yuta-MP3-Downloade?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/iuricode/Yuta-MP3-Downloade?style=for-the-badge)

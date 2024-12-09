@@ -1,10 +1,8 @@
 # Yuta, an MP3 Downloader
 
-![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/Yuta-MP3-Downloader?style=for-the-badge)
-![GitHub language count](https://img.shields.io/github/languages/count/iuricode/Yuta-MP3-Downloader?style=for-the-badge)
-![GitHub forks](https://img.shields.io/github/forks/iuricode/Yuta-MP3-Downloader?style=for-the-badge)
-![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/Yuta-MP3-Downloader?style=for-the-badge)
-![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/Yuta-MP3-Downloader?style=for-the-badge)
+![GitHub repo size](https://img.shields.io/github/repo-size/EduardoAlcaria/Yuta-MP3-Downloader?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/EduardoAlcaria/Yuta-MP3-Downloader?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/EduardoAlcaria/Yuta-MP3-Downloader?style=for-the-badge)
 
 <img src="img.png" alt="yuta's banner">
 
